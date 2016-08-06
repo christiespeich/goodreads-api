@@ -77,6 +77,23 @@ class GoodReads
             )
         );
     }
+	
+	/**
+     * Get details for a given user by username.
+     *
+     * @param  string $userName
+     * @return array
+     */
+    public function getUserByUserName($userName)
+    {
+        return $this->request(
+            'user/show',
+            array(
+                'key' => $this->apiKey,
+                'username' => (string)$userName
+            )
+        );
+    }
     /**
      * Get a shelf for a given user.
      *
@@ -136,6 +153,32 @@ class GoodReads
     {
         return $this->getShelf($userId, 'read', $sort, $limit, $page);
     }
+	
+	
+	/**
+	 *  Get the review and rating for the specified user and book
+	 *  
+	 *  
+	 *  @param 	integer 	$userId 
+	 *  @param 	integer 	$bookId 
+	 *  @param 	bool 	$includeWork 
+	 *  
+	 *  
+	 */
+	 public function getReviewByUser($userId, $bookId, $includeWork = true) 
+	{
+		 return $this->request(
+            'review/show_by_user_and_book',
+            array(
+                'key' => $this->apiKey,
+                'user_id' => (int)$userId,
+				'book_id' => (int)$bookId,
+				'include_review_on_word' => (bool)$includeWork
+            )
+        );
+	}
+	
+
     /**
      * Makes requests to the API.
      *
