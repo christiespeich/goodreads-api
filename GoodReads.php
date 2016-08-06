@@ -163,6 +163,7 @@ class GoodReads
 	 *  @param 	integer 	$bookId 
 	 *  @param 	bool 	$includeWork 
 	 *  
+	 *  @return array
 	 *  
 	 */
 	 public function getReviewByUser($userId, $bookId, $includeWork = true) 
